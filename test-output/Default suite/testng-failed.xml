@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="practicefour.homework.Mail126DotCom">
+        <methods>
+          <include name="realse"/>
+          <include name="login126Site"/>
+          <include name="inital"/>
+          <include name="upload"/>
+        </methods>
+      </class> <!-- practicefour.homework.Mail126DotCom -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

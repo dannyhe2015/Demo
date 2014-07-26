@@ -1,0 +1,46 @@
+<suite name="FireflyAutomation" >
+    <parameter name="platform" value="chrome"/>
+
+    
+	 <test name="Practice1" preserve-order="true" >
+	     <groups>
+	         <define name="submodule1"></define>
+	         <define name="submodule2"></define>
+	         <define name="submodule3"></define>
+	         <define name="submodule4"></define>
+	         
+	         <define name="IE">
+	             <include name="submodule1"/>
+	             <include name="submodule2"/>
+	         </define>
+	         
+	             
+	         <define name="FF">
+	             <include name="submodule2"/>
+	             <include name="submodule3"/>
+	         </define>
+	         
+	             
+	         <define name="chrome">
+	             <include name="submodule4"/>
+	             <include name="submodule3"/>
+	             
+	         </define>
+	         
+	         
+	          <run>	              
+	              <include name="browsers"/>
+	             <include name="chrome"></include>
+	          </run>
+	     </groups>
+	     
+	     
+		<classes>	  		          	
+			<class name="practicetwo.homework.MutipleBrowsers" />
+			
+				  		
+		</classes>
+	</test> 
+	 
+
+</suite>   

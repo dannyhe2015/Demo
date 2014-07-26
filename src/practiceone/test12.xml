@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="20140510-training">
+  <test verbose="2" name="testng practice">
+    <classes>
+      <class name="practiceone.Practice1OnTestng">
+        <methods>
+          <include name="test1"/>
+          <include name="test2"/>
+        </methods>
+      </class> <!-- practiceone.Practice1OnTestng -->
+    </classes>
+  </test> <!-- Default test -->
+</suite>

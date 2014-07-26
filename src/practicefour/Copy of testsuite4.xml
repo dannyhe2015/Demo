@@ -1,0 +1,13 @@
+<suite name="FireflyAutomation" >
+	 <parameter name="data" value="\tool\test.properties" />	 
+	  <parameter name="locator" value="\tool\locators.properties" />	 
+	 
+	 <test name="Practice1" preserve-order="true" >
+		<classes>			
+			<class name="practicefour.Practice2OnTestNG" >
+		       
+		   </class>
+		    
+		</classes>
+	</test> 	
+</suite> 

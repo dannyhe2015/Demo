@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [FireflyAutomation]">
+  <test name="Practice1(failed)">
+    <groups>
+      <run>
+        <include name="IE"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="practicetwo.homework.MutipleBrowsers">
+        <methods>
+          <include name="submodule2"/>
+        </methods>
+      </class> <!-- practicetwo.homework.MutipleBrowsers -->
+    </classes>
+  </test> <!-- Practice1(failed) -->
+</suite> <!-- Failed suite [FireflyAutomation] -->
