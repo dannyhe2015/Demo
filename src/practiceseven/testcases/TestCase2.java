@@ -14,10 +14,12 @@ import practicefour.ParseProperties;
 import practicefour.Wait;
 import practiceseven.libs.Do;
 import practiceseven.pagebuilder.LoginPage;
-import practiceseven.pagebuilder.WebPages;
+//import practiceseven.pagebuilder.WebPages;
 import practiceseven.pages.HomePage;
+import practiceseven.utils.WebPages;
 import practicetwo.launch.Browsers;
 import practicetwo.launch.BrowsersType;
+
 
 public class TestCase2 {
 	   private WebDriver driver;
@@ -32,17 +34,12 @@ public class TestCase2 {
 			driver.manage().window().maximize();
 			wait = new Wait(driver);		
 		}
-		
 
-		//@Test
-		public void test2(){
-			HomePage homepage = new HomePage(driver);
-			homepage.navigateToJD("http://www.jd.com/");
-		}
 		
 		@Test
 		public void newPageOjectMethod(){
 			driver.get("http://www.126.com");
+			new WebPages(driver);
 	        new LoginPage(driver).setUserName("FireflyAutomation").setPasswd("Firefly").login();
 			
 		}

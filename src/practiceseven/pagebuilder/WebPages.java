@@ -2,6 +2,7 @@ package practiceseven.pagebuilder;
 
 import org.openqa.selenium.WebDriver;
 
+
 public class WebPages {
 
 	private static WebDriver dirver;

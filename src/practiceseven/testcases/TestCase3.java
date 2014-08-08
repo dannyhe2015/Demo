@@ -15,6 +15,7 @@ import practicefour.homework.Do;
 import practiceseven.locators.NewRegLoc;
 import practiceseven.pages.NewHomePage;
 import practiceseven.pages.NewRegisterPage;
+import practiceseven.utils.WebPages;
 import practicetwo.launch.Browsers;
 import practicetwo.launch.BrowsersType;
 
@@ -23,12 +24,13 @@ public class TestCase3 {
 	private WebDriver driver;
 	private NewRegisterPage newregjd;
 	private NewHomePage newhome;
+	private WebPages webpage;
 	 
 	@BeforeClass
 	public void inital(){		
 		Browsers browser = new Browsers(BrowsersType.firefox);
 		driver = browser.driver;	
-		
+		webpage = new WebPages(driver);
 		newregjd = new NewRegisterPage(driver);
 		newhome = new NewHomePage(driver);
 	}
@@ -44,9 +46,14 @@ public class TestCase3 {
 		
 		String accountname = sdf.format(cl.getTime());
 		
-		newhome.navigateToJD("http://www.jd.com").register();
-		newregjd.setAccountName("test"+accountname).setPasswords("terryselenium_123").submit();
+		
+		webpage.homePage().navigateToJD("http://www.jd.com").register();
+		webpage.regPage().setAccountName("test"+accountname).setPasswords("terryselenium_123").submit();
 		Assert.assertEquals(newregjd.getWebElement(NewRegLoc.regsuc, "test"+accountname).isDisplayed(), true);
+		
+		//newhome.navigateToJD("http://www.jd.com").register();
+		//newregjd.setAccountName("test"+accountname).setPasswords("terryselenium_123").submit();
+		//Assert.assertEquals(newregjd.getWebElement(NewRegLoc.regsuc, "test"+accountname).isDisplayed(), true);
 		
 	}
 }
