@@ -57,7 +57,7 @@ public class RegisterOnJD {
 	
 	//动态设置webpage上的元素xpath
 	public String setWebElement(String value){
-		dynamicstr = "//div[text()=' 恭喜，%var[0]% 已注册成功！']";
+		dynamicstr = "//div[text()=' 恭喜，%var% 已注册成功！']";
 		dynamicstr = dynamicstr.replace("%var%", value);		
 		return dynamicstr;
 		
