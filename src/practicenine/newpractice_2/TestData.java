@@ -72,10 +72,11 @@ public class TestData {
 	
 	
 	public static void main(String[] args){
-		TestData a = new TestData("G:\\SeleniumTraining1\\FireflyAutomation\\trunk\\src\\practicenine\\testdata\\userinfo.csv");
+		TestData a = new TestData("C:/Users/u123485/git/FireflyWorks/src/practicenine/testdata/userinfo.csv");
 		
 		for(int i=1; i<=3;i++){
-			System.out.println(a.getTestData("password", "tc"+i));
+			System.out.println(a.getTestData("username", "tc"+i)+","+a.getTestData("URL", "tc"+i));
+		
 			
 		}
 	}
