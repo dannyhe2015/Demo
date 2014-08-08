@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import practicefour.ParseProperties;
+import practicefour.Wait;
 import practiceseven.libs.Do;
 import practiceseven.pages.HomePage;
 import practiceseven.pages.RegisterOnJD;
@@ -23,31 +24,35 @@ import practicetwo.launch.BrowsersType;
 public class TestCase1 {
 	   private WebDriver driver;
 	   private Do du;
+	   private Wait wait;
 	   
 		@BeforeClass
 		public void inialize(){
 		
 			Browsers brower = new Browsers(BrowsersType.firefox);
 			driver = brower.driver; 
-			du = new Do(driver);
 			driver.manage().window().maximize();
+			wait = new Wait(driver);
 		}
 		
 		
 		@Test
 		public void regAccount(){
-			//Wait wait = new Wait(ffwb);
+			//
 			//ffwb.get("http://www.jd.com/");
 			RegisterOnJD reg = new RegisterOnJD(driver);
+			
 			HomePage homepage = new HomePage(driver);
 			
 			
 			
 			homepage.navigateToJD("http://www.jd.com/");
 			homepage.register();
-			reg.setAccountName("testRD");
+			reg.setAccountName("testRD2015");
+			
 			reg.setPassword("admin123");
 			reg.submit();
+			
 			Assert.assertEquals(reg.getWebElement().isDisplayed(),true);
 		}
 		
