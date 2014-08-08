@@ -1,4 +1,4 @@
-testcaseid,username,password,comments
-tc1,FireflyAutomation,Firefly,credential of 126.com
-tc2,a,a1,c
-tc3,v,a2,n
+testcaseid,username,password,URL,comments
+tc1,FireflyAutomation,Firefly,u1,credential of 126.com
+tc2,a1,windows,u2,c
+tc3,a2,v2,u3,n
