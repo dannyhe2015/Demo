@@ -16,15 +16,14 @@ public class TestSQLite {
 	private Mail126Page mail126page;
 	private static Wait wa;
 	
-	static{
-		Browsers browser = new Browsers(BrowsersType.firefox);
-		driver = browser.driver;
-		wa = new Wait(driver);
-	}
+
 	
 	
 	@BeforeClass
 	public void start(){
+		Browsers browser = new Browsers(BrowsersType.firefox);
+		driver = browser.driver;
+		wa = new Wait(driver);
 		//all initial pages should be put here.
 		mail126page = new Mail126Page(driver);		
 		
