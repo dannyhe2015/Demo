@@ -71,10 +71,10 @@ public class DBOp {
 	
 	
 	public static void main(String[] args) {
-		DBOp test = new DBOp("LoginPage");
+		DBOp test = new DBOp("Mail126Page");
 		test.conn();
 		System.out.println(test.getLocatorXpath( "UserName"));
-		//System.out.print(test.getLocatorCSS( "Password"));
+		System.out.print(test.getLocatorCSS( "Password"));
 		
 	}
 	

@@ -1,4 +1,4 @@
 testcaseid,username,password,URL,comments
-tc1,FireflyAutomation,Firefly,u1,credential of 126.com
+tc1,FireflyAutomation,Firefly,http://www.126.com,credential of 126.com
 tc2,a1,windows,u2,c
 tc3,a2,v2,u3,n

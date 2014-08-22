@@ -21,50 +21,51 @@ import org.testng.annotations.Test;
 
 import practicefour.ParseProperties;
 import practicefour.Wait;
+import practiceseven.pages.NewHomePage;
+import practiceseven.pages.NewRegisterPage;
+import practiceseven.utils.WebPages;
+import practicetwo.launch.Browsers;
+import practicetwo.launch.BrowsersType;
 import practiceeight.HomePage;
 import practiceeight.LoginPage;
+import practicenine.BaiduLocs;
+import practicenine.newpractice_2.TestData;
+import practiceseven.libs.Do;
 
 public class TestCase1 {
 	
-	    protected  static WebDriver ffwb;
-		private FirefoxProfile firefoxprofile;
-		private String projectpath = System.getProperty("user.dir");		
+	    protected  static WebDriver driver;
 		private ParseProperties data = new ParseProperties(System.getProperty("user.dir")+"\\tool\\test.properties"); 
 		private Wait wa;
+		private Do du;
+		private Switch sw;
 		
 		@BeforeClass
 		public void startFirefox(){
-
-			File firebug = new File(projectpath+"/tool/firebug-1.12.1-fx.xpi");
-			File firepath = new File(projectpath+"/tool/firepath-0.9.7-fx.xpi");
-			File sqlitemgr = new File(projectpath+"/tool/sqlite_manager-0.8.1-fx+tb+sm.xpi");
-			firefoxprofile =  new FirefoxProfile();
-			try {
-				firefoxprofile.addExtension(firebug);
-				firefoxprofile.addExtension(firepath);
-				firefoxprofile.addExtension(sqlitemgr);
-				firefoxprofile.setPreference("webdriver.accept.untrusted.certs", "true"); 
-				firefoxprofile.setPreference("extensions.firebug.currentVersion", "1.12.1");
-				
-				ffwb = new FirefoxDriver(firefoxprofile);
-				ffwb.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				wa = new Wait(ffwb);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}		
+			Browsers browser = new Browsers(BrowsersType.firefox);
+			driver = browser.driver;	
+            du = new Do(driver);
+            sw = new Switch(driver);
+            wa = new Wait(driver);
 		}
 		
 		
 		@Test
 		public void loginBaidu(){
-			ffwb.get("http://www.baidu.com");
-			ffwb.findElement(By.xpath("//a[@name='tj_mp3']")).click();
-			ffwb.findElement(By.xpath("//a[contains(text(),'经典老歌')]")).click();
-			ffwb.findElement(By.xpath("//span[child::a[text()='千千阙歌'] ]/following-sibling::span/descendant::a[@title='下载']")).click();
-			Switch sw = new Switch(ffwb);
-			sw.toSpecificWindow("下载_百度音乐");
-			ffwb.findElement(By.xpath("//a[contains(@href,'link=http:')]/span/span")).click();
+	
+			driver.get("http://www.baidu.com");
+			
+			/*loginBaidu("some","someone");
+			du.what(BaiduLocs.baiduMusic).click();
+			
+			wa.waitFor(5000);
+			du.what(BaiduLocs.dayTopSong).click();
+			du.what(BaiduLocs.goToDownload).click();
+			
+			sw.toSpecificWindow("     下载_百度音乐-听到极致"); 
+			du.what(BaiduLocs.download).click();*/
+			
+
 			try {
 				Runtime.getRuntime().exec(System.getProperty("user.dir")+"\\tool\\download.exe");
 				Thread.sleep(5000);
@@ -79,21 +80,39 @@ public class TestCase1 {
 		}
 		
 		@Test
-		public void login126DotCom(){				
-			Login126Page loginpage = new Login126Page(ffwb);	
+		public void login126DotCom(){		
+			TestData td = new TestData(System.getProperty("user.dir")+"\\src\\practicenine\\testdata\\userinfo.csv");
+			Login126Page loginpage = new Login126Page(driver);	
 			
-			ffwb.get("http://www.126.com");			
-			loginpage.setUserName("FireflyAutomation");
-			loginpage.setPassword("Firefly");
+			String url =td.getTestData("URL", "tc1");
+			String username = td.getTestData("username", "tc1");
+			String password = td.getTestData("password", "tc1");
+			
+			driver.get(url);			
+			loginpage.setUserName(username);
+			loginpage.setPassword(password);
 			loginpage.signIn();
 			wa.waitFor(5000);
 			
 		}
 		
+		
+		
+		
+		
+		public void loginBaidu(String username,String password){
+			du.what(BaiduLocs.login).click();
+			wa.waitForElementPresent(BaiduLocs.username);
+			du.what(BaiduLocs.username).sendKeys(username);
+			du.what(BaiduLocs.password).sendKeys(password);
+			du.what(BaiduLocs.submit).click();
+			wa.waitFor(5000);
+			wa.waitForElementPresent(BaiduLocs.baiduMusic);
+		}
 
-		@AfterClass
+		//@AfterClass
 		public void end(){
-			ffwb.quit();
+			driver.quit();
 		}
 		
 		
