@@ -27,9 +27,9 @@ public class LoginBaidu {
 	
 	
 	@Test
-	public void doDownload(){
+	public void doLogin(){
 		driver.get("http://www.baidu.com");		
-		baiduhomepage.login("aaa", "ddd");
+		baiduhomepage.login("u1", "p1");
 	}
 	
 	

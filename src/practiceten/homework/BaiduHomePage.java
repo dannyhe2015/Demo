@@ -12,7 +12,7 @@ public class BaiduHomePage extends PageBase{
 
 	
 	public BaiduHomePage(WebDriver driver){
-		super(driver);		
+		super(driver,"BaiduHomePage");		
 		this.driver = driver;	
 		wait = new Wait(driver);
 		
@@ -29,7 +29,7 @@ public class BaiduHomePage extends PageBase{
 		
 		getLoc("UserName").sendKeys(userName);
 		
-		getLoc("Password").sendKeys(userName);
+		getLoc("Password").sendKeys(password);
 		
 		getLoc("Submit").click();
 	}

@@ -19,11 +19,11 @@ public class PageBase {
 	private DBOp db;	
 	private Map<String,String> sf = new HashMap();
 	
-	public PageBase(WebDriver driver){
+	public PageBase(WebDriver driver,String tablename){
 		this.driver = driver;
 		du = new Do(driver);
 		
-		db = new DBOp("BaiduHomePage");		
+		db = new DBOp(tablename);		
 		db.conn(System.getProperty("user.dir")+"\\src\\practiceten\\homework\\BaiduDB.sqlite");
 	}
 	
@@ -32,7 +32,7 @@ public class PageBase {
 		
 		WebElement we = null;		
 		
-		if(db.getLocatorXpath(loc)!=null){			    
+		if(db.getLocatorXpath(loc)!=null&&!db.getLocatorXpath(loc).equals("")){			    
 		    try{
 		    	we = du.what(db.getLocatorXpath(loc));
 		    }catch(Exception e){
@@ -43,8 +43,7 @@ public class PageBase {
 		}
 		else{			
 			we = du.whatCSS(db.getLocatorCSS(loc));
-		}
-			
+		}			
 		
 		return we;
 	}
