@@ -16,10 +16,10 @@ public class DBOp {
 		this.tablename = tablename;
 	}
     
-	public void conn(){
+	public void conn(String db){
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:"+System.getProperty("user.dir")+"\\tool\\mylocator.sqlite");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:"+db);
 			stat = conn.createStatement();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -72,7 +72,7 @@ public class DBOp {
 	
 	public static void main(String[] args) {
 		DBOp test = new DBOp("Mail126Page");
-		test.conn();
+		test.conn("mylocator.sqlite");
 		System.out.println(test.getLocatorXpath( "UserName"));
 		System.out.print(test.getLocatorCSS( "Password"));
 		
