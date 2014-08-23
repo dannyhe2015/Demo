@@ -30,12 +30,12 @@ public class BrowsersType {
 	
 	public WebDriver setFirefox(String nodeurl){		
 		caps = DesiredCapabilities.firefox();		
-		File firebug = new File(projectpath+"/tool/firebug-1.12.1-fx.xpi");
-	    File firepath = new File(projectpath+"/tool/firepath-0.9.7-fx.xpi");
+		//File firebug = new File(projectpath+"/tool/firebug-1.12.1-fx.xpi");
+	    //File firepath = new File(projectpath+"/tool/firepath-0.9.7-fx.xpi");
 	    FirefoxProfile firefoxprofile =  new FirefoxProfile();
 		try {
-			firefoxprofile.addExtension(firebug);
-			firefoxprofile.addExtension(firepath);
+			//firefoxprofile.addExtension(firebug);
+			//firefoxprofile.addExtension(firepath);
 			firefoxprofile.setPreference("webdriver.accept.untrusted.certs", "true"); 
 			firefoxprofile.setPreference("extensions.firebug.currentVersion", "1.12.1");
 			caps.setCapability(FirefoxDriver.PROFILE, firefoxprofile);
