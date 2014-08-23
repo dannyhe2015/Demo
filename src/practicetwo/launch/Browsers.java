@@ -2,6 +2,7 @@ package practicetwo.launch;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 
@@ -11,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class Browsers {
 
@@ -19,10 +21,13 @@ public class Browsers {
 	private static DesiredCapabilities caps = null;
 	private String projectpath ="G:\\SeleniumTraining1\\FireflyAutomation\\trunk";
 
+	public static String nodeurl="";
+	
 	
 	public Browsers(BrowsersType browserstype){
 		switch(browserstype){
 		    case firefox:
+		    	caps = DesiredCapabilities.firefox();		
 		    	File firebug = new File(projectpath+"/tool/firebug-1.12.1-fx.xpi");
 			    File firepath = new File(projectpath+"/tool/firepath-0.9.7-fx.xpi");
 				firefoxprofile =  new FirefoxProfile();
@@ -35,7 +40,16 @@ public class Browsers {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				driver = new FirefoxDriver(firefoxprofile);
+				caps.setCapability(FirefoxDriver.PROFILE, firefoxprofile);
+		    if(nodeurl.equals(""))
+		        driver = new FirefoxDriver(firefoxprofile);
+		    else
+			    try {
+				    driver = new RemoteWebDriver(new URL(nodeurl), caps);
+			    } catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				   e.printStackTrace();
+			    }	
 				driver.manage().window().maximize();
 				break;
 		    case ie:	
@@ -45,7 +59,15 @@ public class Browsers {
 				caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);   
 				caps.setCapability(InternetExplorerDriver.IE_SWITCHES, "-private");		
 		        caps.setCapability("ignoreZoomSetting", true);
-		        driver = new InternetExplorerDriver(caps);
+		        if(nodeurl.equals(""))
+		            driver = new InternetExplorerDriver(caps);
+		        else
+		        	try {
+					    driver = new RemoteWebDriver(new URL(nodeurl), caps);
+				    } catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					    e.printStackTrace();
+				    }	
 		        driver.manage().window().maximize();
 		        break;
 		    case chrome:
@@ -53,7 +75,16 @@ public class Browsers {
 				caps = DesiredCapabilities.chrome();
 				caps.setCapability("chrome.switches",Arrays.asList("--start-maximized"));  //最大化browser
 				//capabilities.setCapability("chrome.switches", Arrays.asList("--proxy-server=http://your-proxy-domain:4443")); //设置代理
-				driver = new ChromeDriver(caps);
+
+				if(nodeurl.equals(""))
+				    driver = new ChromeDriver(caps);
+				else
+					try {
+						driver = new RemoteWebDriver(new URL(nodeurl), caps);
+					} catch (MalformedURLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}	
 				driver.manage().window().maximize();
 				break;
 		}
