@@ -114,7 +114,7 @@ public class APIObject {
         }
         
         Attachment attachment =  api.uploadExecutionAttachment(
-        		18, //executionid
+        		31, //executionid
                 "ScreenshotFor this Test case-", //title 
                 "In this screen the attendant is defining the customer plan", //description  
                 "Autor:luter2", //fileName 
@@ -127,19 +127,19 @@ public class APIObject {
     public static void main(String args[]){
     	//the following settings are required;
     	String url = "http://localhost/testlink/testlink-1.9.3/lib/api/xmlrpc.php";
-    	String devKey = "30c180b8b6e68be02a032152cc0e94a4";
-    	String projectName = "TerrySeleniumTraining";
-    	String tl = "WebdriverLesson";
-    	String buildName = "build001";
-    	String platform = "IE";
+    	String devKey = "1aa5b2449edaa0e2ab1a252612e107a8";//"30c180b8b6e68be02a032152cc0e94a4";
+    	String projectName = "TestPro-8-30";
+    	String tl = "TestPlan-8-30";
+    	String buildName = "build-830";
+    	String platform = "ie9";
     	
     	
     	APIObject testlinkapi = new APIObject(url,devKey,projectName,tl,buildName,platform);
     	testlinkapi.getAPI();
     	testlinkapi.getTestCases();
     	
-    	testlinkapi.executeTestCase("DoOne",1,"Luter does!");
-    	testlinkapi.uploadAttchment("C:\\12\\te.jpg");
+    	testlinkapi.executeTestCase("case1",1,"The test case is passed on 8.30");
+    	//testlinkapi.uploadAttchment("C:\\12\\te.jpg");
     	// System.out.println(testlinkapi.tcase.getFullExternalId());
     	 //testlinkapi.tcase.getExecutionOrder()
     	
